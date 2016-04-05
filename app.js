@@ -3,7 +3,7 @@ Router.route('/createbehavior', {
 });
 
 Router.route('/', {
-  template: 'video'
+  template: 'home'
 });
 
 Router.route('/showbehaviors', {
