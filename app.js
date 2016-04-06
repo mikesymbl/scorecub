@@ -22,45 +22,74 @@ Template.body.helpers({
 
 });
 
+Template.mouseTrapImplementation.rendered = function() {
+  Mousetrap.bind('4', function() { console.log('4'); });
+  Mousetrap.bind("?", function() { console.log('show shortcuts!'); });
+  Mousetrap.bind('esc', function() { console.log('escape'); }, 'keyup');
+
+  // combinations
+  Mousetrap.bind('command+shift+k', function() { console.log('command shift k'); });
+
+  // map multiple combinations to the same callback
+  Mousetrap.bind(['command+k', 'ctrl+k'], function() {
+      console.log('command k or control k');
+
+      // return false to prevent default browser behavior
+      // and stop event from bubbling
+      return false;
+  });
+
+  // gmail style sequences
+  Mousetrap.bind('g i', function() { console.log('go to inbox'); });
+  Mousetrap.bind('* a', function() { console.log('select all'); });
+
+  // konami code!
+  Mousetrap.bind('up up down down left right left right b a enter', function() {
+      console.log('konami code');
+  });
+
+}
+
+
 Template.video.rendered = function () {
   var popcorn = Popcorn("#vid");
-var clip = $("#clip");
-popcorn.subtitle({
-  start: 1,
-  stop: 10,
-  text: '#Behavior Tagging in video'
-})
-popcorn.exec(1, function() {
-    clip.text('The Current Model Of Higher Education Is Broken!');
-});
+  var clip = $("#clip");
+    popcorn.subtitle({
+      start: 1,
+      stop: 10,
+      text: '#Behavior Tagging in video'
+    });
+    popcorn.exec(1, function() {
+        clip.text('The Current Model Of Higher Education Is Broken!');
+    });
 
-popcorn.exec(8, function() {
-    clip.text('The Model Does Not Scale!');
-});
+    popcorn.exec(8, function() {
+        clip.text('The Model Does Not Scale!');
+    });
 
-popcorn.exec(22, function() {
-    clip.text('Keep Learning For Rest Of Our Lives!');
-});
+    popcorn.exec(22, function() {
+        clip.text('Keep Learning For Rest Of Our Lives!');
+    });
 
-popcorn.exec(37, function() {
-    clip.text('Cost Too High!');
-});
+    popcorn.exec(37, function() {
+        clip.text('Cost Too High!');
+    });
 
-popcorn.exec(47, function() {
-    clip.text('P2PU Recognition of Learning');
-});
+    popcorn.exec(47, function() {
+        clip.text('P2PU Recognition of Learning');
+    });
 
-popcorn.exec(50, function() {
-    clip.text('Lots Of Demand!');
-});
+    popcorn.exec(50, function() {
+        clip.text('Lots Of Demand!');
+    });
 
-popcorn.exec(65, function() {
-    clip.text('Enter P2PU!');
-});
+    popcorn.exec(65, function() {
+        clip.text('Enter P2PU!');
+    });
 
-popcorn.exec(80, function() {
-    clip.text('Yada, Yada, Yada!');
-});
+    popcorn.exec(80, function() {
+        clip.text('Yada, Yada, Yada!');
+    });
 
 
 }
