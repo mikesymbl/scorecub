@@ -1,5 +1,4 @@
 Template.behaviorForm.events({
-
   // handle the form submission
   'submit form': function(event) {
 

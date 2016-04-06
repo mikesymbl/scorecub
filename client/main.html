@@ -4,5 +4,9 @@
 
 <body>
   {{> navbar}}
-  {{> mouseTrapImplementation}}
+  <div class="behaviorclocks">
+    {{ #each behaviorclocks}}
+    {{ >behavior }}
+      {{ /each }}
+  </div>
 </body>

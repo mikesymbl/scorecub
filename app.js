@@ -8,22 +8,33 @@ Router.route('/', {
 
 Router.route('/showbehaviors', {
   // template: 'showbehaviors'
-  template: 'behaviortable'
+  template: 'showbehaviors'
 });
+
+
 
 if (Meteor.isClient) {
   // counter starts at 0
+// Template.registerHelper('TabularTables', {
+//   behaviorclocks: TabularTables.behaviorclocks
+// });
 
 Template.body.helpers({
+
 
   behaviorclocks: function() {
     return BehaviorClocks.find();
   }
 
+
+
 });
 
 Template.mouseTrapImplementation.rendered = function() {
-  Mousetrap.bind('4', function() { console.log('4'); });
+  Mousetrap.bind('4', function() {
+
+     console.log('4');
+  });
   Mousetrap.bind("?", function() { console.log('show shortcuts!'); });
   Mousetrap.bind('esc', function() { console.log('escape'); }, 'keyup');
 
@@ -112,14 +123,36 @@ UI.registerHelper('indexedArray', function(context, options) {
   }
 });
 
-  Template.behaviorClock.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
 
 }
+
+
+TabularTables = {};
+
+TabularTables.BehaviorClocks = new Tabular.Table({
+  name: "BehaviorClocks",
+  collection: BehaviorClocks,
+  columns: [
+     {data: "behaviorname", title: "Title"}
+    // {data: "author", title: "Author"},
+    // {data: "copies", title: "Copies Available"},
+    // {
+    //   data: "lastCheckedOut",
+    //   title: "Last Checkout",
+    //   render: function (val, type, doc) {
+    //     if (val instanceof Date) {
+    //       return moment(val).calendar();
+    //     } else {
+    //       return "Never";
+    //     }
+    //   }
+    // },
+    // {data: "summary", title: "Summary"},
+    // {
+    //   tmpl: Meteor.isClient && Template.bookCheckOutCell
+    // }
+  ]
+});
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
