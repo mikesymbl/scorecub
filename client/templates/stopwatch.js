@@ -85,7 +85,7 @@ Template.stopwatch.rendered = function() {
 
   // basic examples
   var timerCollection = document.getElementsByClassName("basicTimer");
-
+ 
   for (var i=0, size=timerCollection.length; i<size; i++) {
     new Stopwatch(timerCollection[i]);
   }
