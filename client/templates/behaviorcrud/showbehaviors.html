@@ -1,8 +1,12 @@
 <template name="showbehaviors">
-  <ul>
-     {{#each BehaviorClocks}}
-       {{> behavior}}
-     {{/each}}
-   </ul>
+
+
+ <div class="behaviorclocks">
+    {{#each behaviorclocks}}
+    	{{> behavior }}
+    {{ /each }}
+  </div>
+
+
 
 </template>

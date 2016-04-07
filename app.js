@@ -19,6 +19,7 @@ if (Meteor.isClient) {
 //   behaviorclocks: TabularTables.behaviorclocks
 // });
 
+
 Template.body.helpers({
 
 
@@ -108,14 +109,22 @@ Template.video.rendered = function () {
 
 }
 
-
-Template.behaviortable.helpers({
+Template.showbehaviors.helpers({
 
   behaviorclocks: function() {
     return BehaviorClocks.find();
   }
 
 });
+
+
+// Template.behaviortable.helpers({
+
+//   behaviorclocks: function() {
+//     return BehaviorClocks.find();
+//   }
+
+// });
 // adds index to each item
 UI.registerHelper('indexedArray', function(context, options) {
   if (context) {
