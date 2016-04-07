@@ -1,5 +1,9 @@
 
 Template.stopwatch.rendered = function() {
+
+
+   if (!this.rendered){
+  
   var Stopwatch = function(elem, options) {
 
     var timer       = createTimer(),
@@ -83,12 +87,11 @@ Template.stopwatch.rendered = function() {
   };
 
 
-  // basic examples
-  var timerCollection = document.getElementsByClassName("basicTimer");
- 
-  for (var i=0, size=timerCollection.length; i<size; i++) {
-    new Stopwatch(timerCollection[i]);
-  }
+  // ** my collection code
+  // var stopwatchCollection = document.getElementsByClassName("basicStopwatch");
+  // for (var i=0, size=stopwatchCollection.length; i<size; i++) {
+  //   new Stopwatch(stopwatchCollection[i]);
+  // }
 
 
   // programmatic examples
@@ -102,9 +105,66 @@ Template.stopwatch.rendered = function() {
 
   var c = document.getElementById("c-timer");
   cTimer = new Stopwatch(c, {delay: 100});
+  var cTimerStarted = false;
   // cTimer.start();
   //
   // var d = document.getElementById("d-timer");
   // dTimer = new Stopwatch(d, {delay: 1000});
   // dTimer.start();
+
+
+
+// my collection code
+ var myClocks = BehaviorClocks.find({}, {sort: {behaviorname: -1}});
+ var count = 0;
+
+  myClocks.forEach(function (clock) {
+      console.log("Title of clock " + count + ": " + clock.behaviorname);
+     //  count += 1;
+     // var a = document.getElementById("{{clockID}}");
+     //   var timer = new Stopwatch(a);
+     //   a.start();
+    // Mousetrap.bind(clock.shortcutKey, function() {
+    //    a.stop();
+    //    console.log('{{clockID}} {{shortcutKey}}');
+    // });
+
+  });
+
+ Mousetrap.bind("c", function() {
+
+      if(!cTimerStarted) {
+        cTimer.start();
+        cTimerStarted = true;
+      }
+      else { 
+        cTimer.stop(); 
+        cTimerStarted = false;
+      }
+     
+       console.log('{{clockID}} {{shortcutKey}}');
+    });
+
+
+
+  // contextHotkeys =  new Hotkeys({
+  //     autoLoad : false
+  // });
+
+  // contextHotkeys.add({
+  //     combo : "a",
+  //     callback : function(){
+  //         alert("You pressed ctrl+4 in the new Context");
+  //     }
+  //     cTimer.start();
+  // })
+
+
+
+
+  // run my code
+    this.rendered = true;
+  }
+
+
 }

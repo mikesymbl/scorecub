@@ -30,6 +30,9 @@ Template.body.helpers({
 
 });
 
+
+
+
 Template.mouseTrapImplementation.rendered = function() {
   Mousetrap.bind('4', function() {
 
