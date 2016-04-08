@@ -121,6 +121,7 @@ Template.stopwatch.rendered = function() {
 // my collection code
  var myClocks = BehaviorClocks.find({}, {sort: {behaviorname: -1}});
  var count = 0;
+var isStartTime = true;
 
   myClocks.forEach(function (clock) {
       console.log("Title of clocky " + count + ": " + clock.behaviorname + clock.shortcutKey);
@@ -130,6 +131,7 @@ Template.stopwatch.rendered = function() {
      //   a.start();
     Mousetrap.bind(clock.shortcutKey, function() {
 
+      
       var clocktime = $("#myVideo").currentTime;
       // console.log($("#myVideo").currentTime)
        console.log("triggered" + clock.clockID);
@@ -137,25 +139,28 @@ Template.stopwatch.rendered = function() {
           // get the data we need from the form
           var newEvent = {
             behaviorname: clock.behaviorname,
-            time: aTimer.time
+            time: $("#a-timer span").text()
           };
-
-          
-
           // create the new poll
           BehaviorEvents.insert(newEvent);
        }
 
-
+       else if(clock.timerType == "duration") {
+          var newEvent = {
+            behaviorname: clock.behaviorname,
+            time: $("#a-timer span").text(),
+            startTime: isStartTime
+            };
+          // create the new poll
+          BehaviorEvents.insert(newEvent);
+          isStartTime = false;
+       }
 
  // behaviorname: event.target.behaviorname.value,
  //      shortcutKey: event.target.shortcutKey.value,
  //      timerType: event.target.timerType.value,
  //      category: event.target.category.value,
  //      clockID: event.target.behaviorname.value + '-id'
-
-
-
 
     });
 

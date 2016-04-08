@@ -20,8 +20,10 @@ if (Meteor.isClient) {
 // });
 
 
+  globalTime = $("#a-timer span").text();
+  
+  
 Template.body.helpers({
-
 
   behaviorclocks: function() {
     return BehaviorClocks.find();
