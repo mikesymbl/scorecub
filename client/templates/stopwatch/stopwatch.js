@@ -131,19 +131,6 @@ Template.stopwatch.rendered = function() {
 
   });
 
- Mousetrap.bind("c", function() {
-
-      if(!cTimerStarted) {
-        cTimer.start();
-        cTimerStarted = true;
-      }
-      else { 
-        cTimer.stop(); 
-        cTimerStarted = false;
-      }
-     
-       console.log('{{clockID}} {{shortcutKey}}');
-    });
 
 
 
@@ -166,5 +153,18 @@ Template.stopwatch.rendered = function() {
     this.rendered = true;
   }
 
+ Mousetrap.bind("c", function() {
+
+      if(!cTimerStarted) {
+        cTimer.start();
+        cTimerStarted = true;
+      }
+      else { 
+        cTimer.stop(); 
+        cTimerStarted = false;
+      }
+     
+       console.log(cTimer.delta);
+    });
 
 }

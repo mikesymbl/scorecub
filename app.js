@@ -25,6 +25,10 @@ Template.body.helpers({
 
   behaviorclocks: function() {
     return BehaviorClocks.find();
+  },
+
+  behaviorevents: function() {
+    return BehaviorEvents.find();
   }
 
 
@@ -36,7 +40,8 @@ Template.body.helpers({
 
 Template.mouseTrapImplementation.rendered = function() {
   Mousetrap.bind('4', function() {
-
+     var delta = $("#a-timer").currentTime;
+     console.log("***DELTA"+delta);
      console.log('4');
   });
   Mousetrap.bind("?", function() { console.log('show shortcuts!'); });

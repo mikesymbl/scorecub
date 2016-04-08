@@ -2,7 +2,6 @@
 Template.stopwatch.rendered = function() {
 
 
-   if (!this.rendered){
   
   var Stopwatch = function(elem, options) {
 
@@ -13,6 +12,8 @@ Template.stopwatch.rendered = function() {
         offset,
         clock,
         interval;
+
+        var started = false;
 
     // default options
     options = options || {};
@@ -30,6 +31,7 @@ Template.stopwatch.rendered = function() {
     // private functions
     function createTimer() {
       return document.createElement("span");
+      started = false;
     }
 
     function createButton(action, handler) {
@@ -49,6 +51,7 @@ Template.stopwatch.rendered = function() {
         offset   = Date.now();
         interval = setInterval(update, options.delay);
       }
+      started = true;
     }
 
     function stop() {
@@ -56,6 +59,7 @@ Template.stopwatch.rendered = function() {
         clearInterval(interval);
         interval = null;
       }
+      started = false;
     }
 
     function reset() {
@@ -119,31 +123,57 @@ Template.stopwatch.rendered = function() {
  var count = 0;
 
   myClocks.forEach(function (clock) {
-      console.log("Title of clock " + count + ": " + clock.behaviorname);
+      console.log("Title of clocky " + count + ": " + clock.behaviorname + clock.shortcutKey);
      //  count += 1;
      // var a = document.getElementById("{{clockID}}");
      //   var timer = new Stopwatch(a);
      //   a.start();
-    // Mousetrap.bind(clock.shortcutKey, function() {
-    //    a.stop();
-    //    console.log('{{clockID}} {{shortcutKey}}');
-    // });
+    Mousetrap.bind(clock.shortcutKey, function() {
+
+      var clocktime = $("#myVideo").currentTime;
+      // console.log($("#myVideo").currentTime)
+       console.log("triggered" + clock.clockID);
+       if(clock.timerType == "frequency") {
+          // get the data we need from the form
+          var newEvent = {
+            behaviorname: clock.behaviorname,
+            time: aTimer.time
+          };
+
+          
+
+          // create the new poll
+          BehaviorEvents.insert(newEvent);
+       }
+
+
+
+ // behaviorname: event.target.behaviorname.value,
+ //      shortcutKey: event.target.shortcutKey.value,
+ //      timerType: event.target.timerType.value,
+ //      category: event.target.category.value,
+ //      clockID: event.target.behaviorname.value + '-id'
+
+
+
+
+    });
 
   });
 
- Mousetrap.bind("c", function() {
+ // Mousetrap.bind("c", function() {
 
-      if(!cTimerStarted) {
-        cTimer.start();
-        cTimerStarted = true;
-      }
-      else { 
-        cTimer.stop(); 
-        cTimerStarted = false;
-      }
+ //      if(!cTimerStarted) {
+ //        cTimer.start();
+ //        cTimerStarted = true;
+ //      }
+ //      else { 
+ //        cTimer.stop(); 
+ //        cTimerStarted = false;
+ //      }
      
-       console.log('{{clockID}} {{shortcutKey}}');
-    });
+ //       console.log();
+ //    });
 
 
 
@@ -161,6 +191,7 @@ Template.stopwatch.rendered = function() {
 
 
 
+   if (!this.rendered){
 
   // run my code
     this.rendered = true;
