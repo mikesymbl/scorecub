@@ -8,11 +8,11 @@ video, input {
 }
 
 input {
-    width: 100%;       
+    width: 100%;
 }
 
 .info {
-    background-color: aqua;            
+    background-color: aqua;
 }
 
 .error {
@@ -31,7 +31,7 @@ input {
                     <option value="Pup Retrieval II">Pup Retrieval II</option>
                    <option value="Partner Preference">Partner Preference</option>
     </select>
-	
+
 	<div id="message"></div>
 	<input class="form-control" type="file" accept="video/*"/>
 	<video  id="myVideo" width="480" height="360" controls preload="none"></video>
@@ -73,14 +73,14 @@ input {
             videoNode.src = fileURL;
         },
         inputNode = document.querySelector('input');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+
     if (!URL) {
-        displayMessage('Your browser is not ' + 
+        displayMessage('Your browser is not ' +
            '<a href="http://caniuse.com/bloburls">supported</a>!', true);
-        
+
         return;
-    }                
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+    }
+
     inputNode.addEventListener('change', playSelectedFile, false);
 }(window));
 
@@ -89,8 +89,60 @@ input {
 
 <script>
 $('#myVideo').on('play', function (e) {
-   $('#myModal').modal('show');
+  //  $('#myModal').modal('show');
+
+	// my collection code
+	 var myClocks = BehaviorClocks.find({}, {sort: {behaviorname: -1}});
+	 var count = 0;
+	var isStartTime = true;
+
+	  myClocks.forEach(function (clock) {
+	      console.log("Title of clocky " + count + ": " + clock.behaviorname + clock.shortcutKey);
+	     //  count += 1;
+	     // var a = document.getElementById("{{clockID}}");
+	     //   var timer = new Stopwatch(a);
+	     //   a.start();
+	    Mousetrap.bind(clock.shortcutKey, function() {
+
+
+	      var clocktime = $("#myVideo").currentTime;
+
+	      var timetest = $("#a-timer span").text();
+	      console.log(timetest);
+	      // console.log($("#myVideo").currentTime)
+	       console.log("triggered" + clock.clockID);
+	       if(clock.timerType == "frequency") {
+	          // get the data we need from the form
+	          var newEvent = {
+	            behaviorname: clock.behaviorname,
+	            time: $("#a-timer span").text()
+	          };
+	          // create the new poll
+	          BehaviorEvents.insert(newEvent);
+	       }
+
+	       else if(clock.timerType == "duration") {
+	          var newEvent = {
+	            behaviorname: clock.behaviorname,
+	            time: $("#a-timer span").text(),
+	            startTime: isStartTime
+	            };
+	          // create the new poll
+	          BehaviorEvents.insert(newEvent);
+	          if(isStartTime) {isStartTime = false;}
+	          else if (!isStartTime) { isStartTime = true;}
+	       }
+
+	 // behaviorname: event.target.behaviorname.value,
+	 //      shortcutKey: event.target.shortcutKey.value,
+	 //      timerType: event.target.timerType.value,
+	 //      category: event.target.category.value,
+	 //      clockID: event.target.behaviorname.value + '-id'
+
+	    });
+	  });
 });
 </script>
-</template>
 
+
+</template>

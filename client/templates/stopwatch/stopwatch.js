@@ -3,7 +3,7 @@ Template.stopwatch.rendered = function() {
 
 
    if (!this.rendered){
-  
+
   var Stopwatch = function(elem, options) {
 
     var timer       = createTimer(),
@@ -159,11 +159,11 @@ Template.stopwatch.rendered = function() {
         cTimer.start();
         cTimerStarted = true;
       }
-      else { 
-        cTimer.stop(); 
+      else {
+        cTimer.stop();
         cTimerStarted = false;
       }
-     
+
        console.log(cTimer.delta);
     });
 
