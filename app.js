@@ -29,7 +29,13 @@ dataTableData = function () {
     return BehaviorEvents.find().fetch(); // or .map()
 };
 var optionsObject = {
-    columns: [{
+    columns: [
+      {
+          title: 'Test Name',
+          data: 'testName', // note: access nested data like this
+          className: 'nameColumn'
+      },
+    {
         title: 'Behavior',
         data: 'behaviorname', // note: access nested data like this
         className: 'nameColumn'
@@ -76,7 +82,7 @@ var behaviorClocksOptionsObject = {
     },
     {
       title: 'Clock Type',
-      data: 'timerType',
+      data: 'timer',
       className: 'nameColumn'
     }
 

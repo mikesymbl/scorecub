@@ -24,7 +24,8 @@ input {
 }
 #left {
 	width: 50%;
-	background: #DEDEDE
+	background: #DEDEDE;
+	padding: 10px;
 }
 #right {
 	flex: 1;
@@ -34,6 +35,9 @@ input {
 	</style>
 <div id="parent">
 	<div id="left">
+
+		<input id="zeTest" class="form-control" type="text" placeholder="Test Name"/>
+
 	<select class="form-control" name="category" id="activeTest">
                   <option value="Behavioral tests and codes">Behavioral tests and codes</option>
                   <option value="Pairing Test">Pairing Test</option>
@@ -45,12 +49,14 @@ input {
     </select>
 
 	<div id="message"></div>
-	<input class="form-control" type="file" accept="video/*"/>
+	<input id="uploadVid" class="form-control" type="file" accept="video/*"/>
 	<video  id="myVideo" width="480" height="360" controls preload="none"></video>
 </div><!-- End left container-->
 	<script>
 
 	var zeeVideo = $("#myVideo");
+	var fileURL ="";
+	var videoName = $("#uploadVid").val();
 
 (function localFileVideoPlayerInit(win) {
     var URL = win.URL || win.webkitURL,
@@ -83,11 +89,11 @@ input {
                 return;
             }
 
-            var fileURL = URL.createObjectURL(file);
+            fileURL = URL.createObjectURL(file);
 
             videoNode.src = fileURL;
         },
-        inputNode = document.querySelector('input');
+        inputNode = document.querySelector('#uploadVid');
 
     if (!URL) {
         displayMessage('Your browser is not ' +
@@ -102,7 +108,9 @@ input {
 
 $('#myVideo').on('play', function (e) {
   //  $('#myModal').modal('show');
-console.log(zeeVideo[0].currentTime);
+var testNamer = $("#zeTest").val();
+	console.log('Break out the popcorn.. now playing' + videoName[0]);
+	console.log(zeeVideo[0].currentTime);
 	// my collection code
 	 var myClocks = BehaviorClocks.find({}, {sort: {behaviorname: -1}});
 	 var count = 0;
@@ -116,8 +124,6 @@ console.log(zeeVideo[0].currentTime);
 	     //   a.start();
 	    Mousetrap.bind(clock.shortcutKey, function() {
 
-
-
 	      // var timetest = $("#a-timer span").text();
 	      // console.log(timetest);
 				var timetest = zeeVideo[0].currentTime;
@@ -127,6 +133,7 @@ console.log(zeeVideo[0].currentTime);
 	       if(clock.timerType == "frequency") {
 	          // get the data we need from the form
 	          var newEvent = {
+							testName: testNamer,
 	            behaviorname: clock.behaviorname,
 	            time: timetest,
 							clockType: clock.timerType
@@ -138,6 +145,7 @@ console.log(zeeVideo[0].currentTime);
 
 	       else if(clock.timerType == "duration") {
 	          var newEvent = {
+							testName: testNamer,
 	            behaviorname: clock.behaviorname,
 	            time: timetest,
 	            startTime: isStartTime,
