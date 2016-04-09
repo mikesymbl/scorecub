@@ -115,7 +115,7 @@ $('#myVideo').on('play', function (e) {
 	          // get the data we need from the form
 	          var newEvent = {
 	            behaviorname: clock.behaviorname,
-	            time: $("#a-timer span").text()
+	            time: timetest
 	          };
 	          // create the new poll
 	          BehaviorEvents.insert(newEvent);
@@ -124,7 +124,7 @@ $('#myVideo').on('play', function (e) {
 	       else if(clock.timerType == "duration") {
 	          var newEvent = {
 	            behaviorname: clock.behaviorname,
-	            time: $("#a-timer span").text(),
+	            time: timetest,
 	            startTime: isStartTime
 	            };
 	          // create the new poll
