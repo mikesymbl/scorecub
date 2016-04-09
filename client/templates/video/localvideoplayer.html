@@ -19,9 +19,21 @@ input {
     background-color: red;
     color: white;
 }
-
+#parent {
+	display: flex
+}
+#left {
+	width: 50%;
+	background: #DEDEDE
+}
+#right {
+	flex: 1;
+	width: 50%;
+	background: #EDEDED;
+}
 	</style>
-
+<div id="parent">
+	<div id="left">
 	<select class="form-control" name="category" id="activeTest">
                   <option value="Behavioral tests and codes">Behavioral tests and codes</option>
                   <option value="Pairing Test">Pairing Test</option>
@@ -35,8 +47,11 @@ input {
 	<div id="message"></div>
 	<input class="form-control" type="file" accept="video/*"/>
 	<video  id="myVideo" width="480" height="360" controls preload="none"></video>
-
+</div><!-- End left container-->
 	<script>
+
+	var zeeVideo = $("#myVideo");
+
 (function localFileVideoPlayerInit(win) {
     var URL = win.URL || win.webkitURL,
         displayMessage = (function displayMessageInit() {
@@ -84,13 +99,10 @@ input {
     inputNode.addEventListener('change', playSelectedFile, false);
 }(window));
 
-	</script>
 
-
-<script>
 $('#myVideo').on('play', function (e) {
   //  $('#myModal').modal('show');
-
+console.log(zeeVideo[0].currentTime);
 	// my collection code
 	 var myClocks = BehaviorClocks.find({}, {sort: {behaviorname: -1}});
 	 var count = 0;
@@ -105,17 +117,19 @@ $('#myVideo').on('play', function (e) {
 	    Mousetrap.bind(clock.shortcutKey, function() {
 
 
-	      var clocktime = $("#myVideo").currentTime;
 
-	      var timetest = $("#a-timer span").text();
-	      console.log(timetest);
+	      // var timetest = $("#a-timer span").text();
+	      // console.log(timetest);
+				var timetest = zeeVideo[0].currentTime;
+
 	      // console.log($("#myVideo").currentTime)
 	       console.log("triggered" + clock.clockID);
 	       if(clock.timerType == "frequency") {
 	          // get the data we need from the form
 	          var newEvent = {
 	            behaviorname: clock.behaviorname,
-	            time: timetest
+	            time: timetest,
+							clockType: clock.timerType
 	          };
 	          // create the new poll
 	          BehaviorEvents.insert(newEvent);
@@ -126,7 +140,8 @@ $('#myVideo').on('play', function (e) {
 	          var newEvent = {
 	            behaviorname: clock.behaviorname,
 	            time: timetest,
-	            startTime: isStartTime
+	            startTime: isStartTime,
+							clockType: clock.timerType
 	            };
 	          // create the new poll
 	          BehaviorEvents.insert(newEvent);
@@ -144,6 +159,9 @@ $('#myVideo').on('play', function (e) {
 	  });
 });
 </script>
+<div id="right">
 
-
+{{> containsTheDataTable}}
+</div>
+</div>
 </template>

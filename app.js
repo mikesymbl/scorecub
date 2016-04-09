@@ -8,9 +8,9 @@ Router.route('/', {
 
 Router.route('/showbehaviors', {
   // template: 'showbehaviors'
-  template: 'showbehaviors'
+  template: 'behaviorclocksDataTable'
 });
-Router.route('/table', {
+Router.route('/results', {
   // template: 'showbehaviors'
   template: 'containsTheDataTable'
 });
@@ -30,10 +30,22 @@ dataTableData = function () {
 };
 var optionsObject = {
     columns: [{
-        title: 'Real Name',
+        title: 'Behavior',
         data: 'behaviorname', // note: access nested data like this
         className: 'nameColumn'
-    }]
+    },
+    {
+      title: 'Time Occurred',
+      data: 'time',
+      className: 'nameColumn'
+    },
+    {
+      title: 'Clock Type',
+      data: 'clockType',
+      className: 'nameColumn'
+    }
+
+    ]
     // ... see jquery.dataTables docs for more
 }
 
@@ -43,6 +55,52 @@ Template.containsTheDataTable.helpers({
     },
     optionsObject: optionsObject // see below
 });
+
+////////////////////////////////////////////////////////////////////////////////
+//                       DATATABLE FOR BEHAVIOR CLOCKS                        //
+////////////////////////////////////////////////////////////////////////////////
+
+behaviorclocksDataTableData = function () {
+    return BehaviorClocks.find().fetch(); // or .map()
+};
+var behaviorClocksOptionsObject = {
+    columns: [{
+        title: 'Shortcut Key',
+        data: 'shortcutKey', // note: access nested data like this
+        className: 'nameColumn'
+    },
+    {
+      title: 'Behavior',
+      data: 'behaviorname',
+      className: 'nameColumn'
+    },
+    {
+      title: 'Clock Type',
+      data: 'timerType',
+      className: 'nameColumn'
+    }
+
+    ]
+    // ... see jquery.dataTables docs for more
+}
+
+Template.behaviorclocksDataTable.helpers({
+    reactiveDataFunction: function () {
+        return behaviorclocksDataTableData;
+    },
+    optionsObject: behaviorClocksOptionsObject // see below
+});
+////////////////////////////////////////////////////////////////////////////////
+//----------------------------------------------------------------------------//
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
 
 
 // function renderPhoto(cellData, renderType, currentRow) {
