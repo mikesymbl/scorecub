@@ -10,7 +10,13 @@ Router.route('/showbehaviors', {
   // template: 'showbehaviors'
   template: 'showbehaviors'
 });
-
+Router.route('/table', {
+  // template: 'showbehaviors'
+  template: 'containsTheDataTable'
+});
+// Route.route('/table', {
+//   template: 'containsTheDataTable'
+// });
 
 
 if (Meteor.isClient) {
@@ -18,6 +24,33 @@ if (Meteor.isClient) {
 // Template.registerHelper('TabularTables', {
 //   behaviorclocks: TabularTables.behaviorclocks
 // });
+
+dataTableData = function () {
+    return BehaviorEvents.find().fetch(); // or .map()
+};
+var optionsObject = {
+    columns: [{
+        title: 'Real Name',
+        data: 'behaviorname', // note: access nested data like this
+        className: 'nameColumn'
+    }]
+    // ... see jquery.dataTables docs for more
+}
+
+Template.containsTheDataTable.helpers({
+    reactiveDataFunction: function () {
+        return dataTableData;
+    },
+    optionsObject: optionsObject // see below
+});
+
+
+// function renderPhoto(cellData, renderType, currentRow) {
+//     // You can return html strings, change sort order etc. here
+//     // Again, see jquery.dataTables docs
+//     var img = "<img src='" + cellData + "' title='" + currentRow.profile.realname + "'>"
+//     return img;
+// }
 
 
 
@@ -144,32 +177,6 @@ UI.registerHelper('indexedArray', function(context, options) {
 }
 
 
-TabularTables = {};
-
-TabularTables.BehaviorClocks = new Tabular.Table({
-  name: "BehaviorClocks",
-  collection: BehaviorClocks,
-  columns: [
-     {data: "behaviorname", title: "Title"}
-    // {data: "author", title: "Author"},
-    // {data: "copies", title: "Copies Available"},
-    // {
-    //   data: "lastCheckedOut",
-    //   title: "Last Checkout",
-    //   render: function (val, type, doc) {
-    //     if (val instanceof Date) {
-    //       return moment(val).calendar();
-    //     } else {
-    //       return "Never";
-    //     }
-    //   }
-    // },
-    // {data: "summary", title: "Summary"},
-    // {
-    //   tmpl: Meteor.isClient && Template.bookCheckOutCell
-    // }
-  ]
-});
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
