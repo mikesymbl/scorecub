@@ -25,6 +25,51 @@ if (Meteor.isClient) {
 //   behaviorclocks: TabularTables.behaviorclocks
 // });
 
+testHasName = false;
+
+
+    triggerNewTestDialog = function triggerNewTestDialog() {
+      $( "#dialog-new-test" ).dialog({
+            resizable: true,
+            height:500,
+            position: ['center', 'top'],
+            width: 400,
+            modal: true,
+            buttons: {
+              "Ok":  {
+                style: "background-color: #007AFF; font-weight: bold; color: white; border: 1px solid #003AFF",
+                text: "Start new test",
+                click: function() {
+
+                  if($("#zeTestDialog").val() == ""){
+                    testHasName = false;
+
+                  }
+                  else if($("#zeTestDialog").val() != ""){
+                    testHasName = true;
+                  }
+                  if(testHasName){
+                        $( this ).dialog( "close" );
+                  }
+                  else if (!testHasName) {
+                    alert("You must enter a name for the test before you can continue");
+                  }
+
+                  // if input is not blank on submit then test has name = true
+                  // reset the clock to designated time based off of test type
+                  reset();
+                }
+              },
+              "Cancel": function() {
+                $(this).dialog("close");
+              }
+              // Cancel: function() {
+              //   $( this ).dialog( "close" );
+              // }
+            }
+          });
+    }
+
 dataTableData = function () {
     return BehaviorEvents.find().fetch(); // or .map()
 };
@@ -67,7 +112,8 @@ Template.containsTheDataTable.helpers({
 ////////////////////////////////////////////////////////////////////////////////
 
 behaviorclocksDataTableData = function () {
-    return BehaviorClocks.find({"category":$("#activeTest").val()}).fetch(); // or .map()
+    // return BehaviorClocks.find({"category":$("#activeTest").val()}).fetch();
+    return BehaviorClocks.find({}).fetch();// or .map()
 };
 var behaviorClocksOptionsObject = {
     columns: [{
@@ -101,14 +147,6 @@ Template.behaviorclocksDataTable.helpers({
 ////////////////////////////////////////////////////////////////////////////////
 
 
-
-
-
-
-
-
-
-
 // function renderPhoto(cellData, renderType, currentRow) {
 //     // You can return html strings, change sort order etc. here
 //     // Again, see jquery.dataTables docs
@@ -127,8 +165,6 @@ Template.body.helpers({
   behaviorevents: function() {
     return BehaviorEvents.find();
   }
-
-
 
 });
 

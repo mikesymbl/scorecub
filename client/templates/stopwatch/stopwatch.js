@@ -79,24 +79,34 @@ Template.stopwatch.rendered = function() {
       if(clock <= 0 || clock == '0') {
         clock = 0;
         render();
+        zeeVideo[0].pause();
         $( "#dialog-confirm" ).dialog({
-              resizable: false,
-              height:140,
+              resizable: true,
+              height:200,
+              position: ['center', 'top'],
+              width: 500,
               modal: true,
               buttons: {
-                "Delete all items": function() {
-                  $( this ).dialog( "close" );
+                "Start New Test":  {
+                  style: "background-color: #007AFF; font-weight: bold; color: white; border: 1px solid #003AFF",
+                  text: "Start new test",
+                  click: function() {
+                    $( this ).dialog( "close" );
+                    triggerNewTestDialog();
+                    reset();
+                  }
                 },
-                Cancel: function() {
-                  $( this ).dialog( "close" );
+                "Download Results": function() {
+                  $(this).dialog("close");
                 }
+                // Cancel: function() {
+                //   $( this ).dialog( "close" );
+                // }
               }
             });
-        reset();
+        // reset();
         stop();
       }
-
-
     }
 
 
