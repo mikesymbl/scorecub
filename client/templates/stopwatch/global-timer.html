@@ -1250,7 +1250,7 @@ body .ui-tooltip {
   		<select class="form-control" name="activeTest" id="activeTest">
   	    <option value="Behavioral tests and codes">Behavioral tests and codes</option>
   	    <option value="Pairing Test">Pairing Test</option>
-  	    <option value="Pairing Test II">Pairing Test</option>
+  	    <option value="Pairing Test II">Pairing Test II</option>
   	    <option value="Intrasexual Aggression">Intrasexual Aggression</option>
   	    <option value="Pup Retrieval">Pup Retrieval</option>
   	    <option value="Pup Retrieval II">Pup Retrieval II</option>
@@ -1264,8 +1264,12 @@ body .ui-tooltip {
 </div>
 
 
+<div class="stopwatch" id="a-timer">Test countdown (seconds)</div>
+<button class="btn btn-danger" id="stopTest">New Test</button>
+<script>
+  $("#stopTest").on('click', function() {
+    triggerNewTestDialog()
+  })
 
-
-
-<div class="stopwatch" id="a-timer"></div>
+</script>
 </template>

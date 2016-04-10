@@ -29,6 +29,57 @@ testHasName = false; // this is a very important global variable and controls a 
 currentTestCategory ="";
 currentTestName = "";
 globalClockValue = 0; // 5 minutes -> goes to stopwatch.js
+shouldResetClockOnStart = false;
+
+updateCountdownTimer = function updateCountdownTimer() {
+  switch (currentTestCategory) {
+      case "Behavioral tests and codes":
+        //Statements executed when the result of expression matches value1
+        globalClockValue = 5 * 60 * 1000; // 5 min * 60 seconds * 1000 millisconds  = 5 min
+        $("#a-timer span").text(globalClockValue / 1000);
+        break;
+      case "Pairing Test":
+        //Statements executed when the result of expression matches value2
+        globalClockValue = 5 * 60 * 1000; // 300 seconds
+        $("#a-timer span").text(globalClockValue / 1000);
+        break;
+
+      case "Pairing Test II":
+        //Statements executed when the result of expression matches valueN
+        globalClockValue = 10*60 * 1000; // 300 seconds
+        $("#a-timer span").text(globalClockValue / 1000);
+        break;
+
+      case "Intrasexual Aggression":
+        globalClockValue = 5 * 60 * 1000; // 300 seconds
+        $("#a-timer span").text(globalClockValue / 1000);
+        break;
+
+        case "Pup Retrieval":
+          globalClockValue = 3 * 60 * 1000; // 300 seconds
+          $("#a-timer span").text(globalClockValue / 1000);
+          break;
+
+          case "Pup Retrieval II":
+            globalClockValue = 5 * 60 * 1000; // 300 seconds
+            $("#a-timer span").text(globalClockValue / 1000);
+            break;
+
+        case "Partner Preference":
+              globalClockValue = 3 * 60 * 1000; // 300 seconds
+              $("#a-timer span").text(globalClockValue / 1000);
+              break;
+
+
+      default:
+        //Statements executed when none of the values match the value of the expression
+        globalClockValue = 300 * 1000; // 300 seconds
+        $("#a-timer span").text(globalClockValue / 1000);
+        break;
+  }
+
+}
+
 
     triggerNewTestDialog = function triggerNewTestDialog() {
       $( "#dialog-new-test" ).dialog({
@@ -53,6 +104,9 @@ globalClockValue = 0; // 5 minutes -> goes to stopwatch.js
 
                   currentTestCategory = $("#activeTest").val();
                   if(testHasName){
+                        shouldResetClockOnStart = true;
+
+                        updateCountdownTimer();
                         $( this ).dialog( "close" );
                   }
                   else if (!testHasName) {
@@ -61,7 +115,7 @@ globalClockValue = 0; // 5 minutes -> goes to stopwatch.js
 
                   // if input is not blank on submit then test has name = true
                   // reset the clock to designated time based off of test type
-                reset();
+                // updateCountdownTimer
                 }
               },
               "Cancel": function() {
