@@ -11,7 +11,7 @@ Template.stopwatch.rendered = function() {
         stopButton  = createButton("stop", stop),
         resetButton = createButton("reset", reset),
         offset,
-        clock,
+        clock = globalClockValue,
         interval;
 
     // default options
@@ -59,8 +59,29 @@ Template.stopwatch.rendered = function() {
     }
 
     function reset() {
-      clock = 5000;
-      render(5000);
+
+      switch (currentTestCategory) {
+          case "Behavioral tests and codes":
+            //Statements executed when the result of expression matches value1
+            globalClockValue = 10 * 60 * 1000; // 5 min * 60 seconds * 1000 millisconds  = 5 min
+            break;
+          case "value2":
+            //Statements executed when the result of expression matches value2
+            globalClockValue = 300 * 1000; // 300 seconds
+            break;
+
+          case "valueN":
+            //Statements executed when the result of expression matches valueN
+            globalClockValue = 300 * 1000; // 300 seconds
+            break;
+          default:
+            //Statements executed when none of the values match the value of the expression
+            globalClockValue = 300 * 1000; // 300 seconds
+            break;
+      }
+
+      clock = globalClockValue;
+      render(globalClockValue);
     }
 
 

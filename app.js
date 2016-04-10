@@ -25,8 +25,10 @@ if (Meteor.isClient) {
 //   behaviorclocks: TabularTables.behaviorclocks
 // });
 
-testHasName = false;
-
+testHasName = false; // this is a very important global variable and controls a lot of user interactions
+currentTestCategory ="";
+currentTestName = "";
+globalClockValue = 0; // 5 minutes -> goes to stopwatch.js
 
     triggerNewTestDialog = function triggerNewTestDialog() {
       $( "#dialog-new-test" ).dialog({
@@ -48,6 +50,8 @@ testHasName = false;
                   else if($("#zeTestDialog").val() != ""){
                     testHasName = true;
                   }
+
+                  currentTestCategory = $("#activeTest").val();
                   if(testHasName){
                         $( this ).dialog( "close" );
                   }
@@ -57,7 +61,7 @@ testHasName = false;
 
                   // if input is not blank on submit then test has name = true
                   // reset the clock to designated time based off of test type
-                  reset();
+                reset();
                 }
               },
               "Cancel": function() {
