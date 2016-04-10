@@ -67,7 +67,7 @@ Template.containsTheDataTable.helpers({
 ////////////////////////////////////////////////////////////////////////////////
 
 behaviorclocksDataTableData = function () {
-    return BehaviorClocks.find().fetch(); // or .map()
+    return BehaviorClocks.find({"category":$("#activeTest").val()}).fetch(); // or .map()
 };
 var behaviorClocksOptionsObject = {
     columns: [{
@@ -81,8 +81,8 @@ var behaviorClocksOptionsObject = {
       className: 'nameColumn'
     },
     {
-      title: 'Clock Type',
-      data: 'timer',
+      title: 'Test Type',
+      data: 'category',
       className: 'nameColumn'
     }
 

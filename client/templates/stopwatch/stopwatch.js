@@ -59,14 +59,46 @@ Template.stopwatch.rendered = function() {
     }
 
     function reset() {
-      clock = 0;
-      render(0);
+      clock = 5000;
+      render(5000);
     }
 
-    function update() {
-      clock += delta();
-      render();
+
+    function setCountdownTime(time)  {
+      clock = time;
+      render(time);
     }
+
+
+
+    function update() {
+      if(clock >= 0) {
+        clock -= delta();
+        render();
+      }
+      if(clock <= 0 || clock == '0') {
+        clock = 0;
+        render();
+        $( "#dialog-confirm" ).dialog({
+              resizable: false,
+              height:140,
+              modal: true,
+              buttons: {
+                "Delete all items": function() {
+                  $( this ).dialog( "close" );
+                },
+                Cancel: function() {
+                  $( this ).dialog( "close" );
+                }
+              }
+            });
+        reset();
+        stop();
+      }
+
+
+    }
+
 
     function render() {
       timer.innerHTML = clock/1000;
@@ -97,8 +129,8 @@ Template.stopwatch.rendered = function() {
   // programmatic examples
   var a = document.getElementById("a-timer");
   aTimer = new Stopwatch(a);
-  aTimer.start();
-  //
+  // aTimer.start();
+  //up
   // var b = document.getElementById("b-timer");
   // bTimer = new Stopwatch(b, {delay: 100});
   // bTimer.start();
@@ -115,21 +147,7 @@ Template.stopwatch.rendered = function() {
 
 
 // my collection code
- var myClocks = BehaviorClocks.find({}, {sort: {behaviorname: -1}});
- var count = 0;
 
-  myClocks.forEach(function (clock) {
-      console.log("Title of clock " + count + ": " + clock.behaviorname);
-     //  count += 1;
-     // var a = document.getElementById("{{clockID}}");
-     //   var timer = new Stopwatch(a);
-     //   a.start();
-    // Mousetrap.bind(clock.shortcutKey, function() {
-    //    a.stop();
-    //    console.log('{{clockID}} {{shortcutKey}}');
-    // });
-
-  });
 
 
 
@@ -153,18 +171,7 @@ Template.stopwatch.rendered = function() {
     this.rendered = true;
   }
 
- Mousetrap.bind("c", function() {
 
-      if(!cTimerStarted) {
-        cTimer.start();
-        cTimerStarted = true;
-      }
-      else {
-        cTimer.stop();
-        cTimerStarted = false;
-      }
 
-       console.log(cTimer.delta);
-    });
 
 }

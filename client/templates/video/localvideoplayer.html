@@ -2,7 +2,7 @@
 
 
 <template name="localvideoplayer">
-	<style>
+<style>
 video, input {
     display: block;
 }
@@ -31,26 +31,25 @@ input {
 	flex: 1;
 	width: 50%;
 	background: #EDEDED;
+	padding: 10px;
 }
-	</style>
+</style>
+
 <div id="parent">
 	<div id="left">
-
 		<input id="zeTest" class="form-control" type="text" placeholder="Test Name"/>
-
-	<select class="form-control" name="category" id="activeTest">
-                  <option value="Behavioral tests and codes">Behavioral tests and codes</option>
-                  <option value="Pairing Test">Pairing Test</option>
-                   <option value="Pairing Test II">Pairing Test</option>
-                  <option value="Intrasexual Aggression">Intrasexual Aggression</option>
-                   <option value="Pup Retrieval">Pup Retrieval</option>
-                    <option value="Pup Retrieval II">Pup Retrieval II</option>
-                   <option value="Partner Preference">Partner Preference</option>
-    </select>
-
-	<div id="message"></div>
-	<input id="uploadVid" class="form-control" type="file" accept="video/*"/>
-	<video  id="myVideo" width="480" height="360" controls preload="none"></video>
+		<select class="form-control" name="category" id="activeTest">
+	    <option value="Behavioral tests and codes">Behavioral tests and codes</option>
+	    <option value="Pairing Test">Pairing Test</option>
+	    <option value="Pairing Test II">Pairing Test</option>
+	    <option value="Intrasexual Aggression">Intrasexual Aggression</option>
+	    <option value="Pup Retrieval">Pup Retrieval</option>
+	    <option value="Pup Retrieval II">Pup Retrieval II</option>
+	    <option value="Partner Preference">Partner Preference</option>
+	  </select>
+		<div id="message"></div>
+		<input id="uploadVid" class="form-control" type="file" accept="video/*"/>
+		<video id="myVideo" width="360" height="240" controls preload="none"></video>
 </div><!-- End left container-->
 	<script>
 
@@ -169,7 +168,9 @@ var testNamer = $("#zeTest").val();
 </script>
 <div id="right">
 
+{{> behaviorclocksDataTable}}
+</div>
+</div>
 {{> containsTheDataTable}}
-</div>
-</div>
+
 </template>
