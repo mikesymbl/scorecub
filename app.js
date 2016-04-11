@@ -49,7 +49,11 @@ updateCountdownTimer = function updateCountdownTimer() {
         globalClockValue = 10*60 * 1000; // 300 seconds
         $("#a-timer span").text(globalClockValue / 1000);
         break;
-
+        case "Pairing Test III":
+          //Statements executed when the result of expression matches valueN
+          globalClockValue = 10 * 60 * 1000; // 300 seconds
+          $("#a-timer span").text(globalClockValue / 1000);
+          break;
       case "Intrasexual Aggression":
         globalClockValue = 5 * 60 * 1000; // 300 seconds
         $("#a-timer span").text(globalClockValue / 1000);
@@ -129,7 +133,7 @@ updateCountdownTimer = function updateCountdownTimer() {
     }
 
 dataTableData = function () {
-    return BehaviorEvents.find().fetch(); // or .map()
+    return BehaviorEvents.find({}).fetch(); // or .map()
 };
 var optionsObject = {
     columns: [

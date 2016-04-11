@@ -16,6 +16,11 @@ Template.behaviorForm.events({
 
     // create the new poll
     BehaviorClocks.insert(newBehavior);
+    event.target.behaviorname.value = '';
+      event.target.shortcutKey.value = '';
+        event.target.timerType.value = '';
+          event.target.category.value = '';
+        
   }
 
 });

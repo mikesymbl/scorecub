@@ -118,7 +118,8 @@ var testNamer = $("#zeTestDialog").val();
 	console.log('Break out the popcorn.. now playing' + videoName[0]);
 	console.log(zeeVideo[0].currentTime);
 	// my collection code
-	 var myClocks = BehaviorClocks.find({}, {sort: {behaviorname: -1}});
+
+	 var myClocks = BehaviorClocks.find({"category": currentTestCategory}, {sort: {behaviorname: -1}});
 	 var count = 0;
 	var isStartTime = true;
 
