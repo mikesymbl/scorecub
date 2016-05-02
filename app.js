@@ -1,22 +1,52 @@
-Router.route('/createbehavior', {
-    template: 'behaviorForm'
-});
-
-Router.route('/', {
-  template: 'home'
-});
-
-Router.route('/showbehaviors', {
-  // template: 'showbehaviors'
-  template: 'behaviorclocksDataTable'
-});
-Router.route('/results', {
-  // template: 'showbehaviors'
-  template: 'containsTheDataTable'
-});
+// Router.route('/createbehavior', {
+//     template: 'behaviorForm'
+// });
+//
+// Router.route('/', function () {
+//   this.render('containsTheDataTable');
+// });
+// // Router.route('/', {
+// //   template: 'home'
+// // });
+//
+// Router.route('/showbehaviors', {
+//   // template: 'showbehaviors'
+//   template: 'behaviorclocksDataTable'
+// });
+// Router.route('/results', {
+//   // template: 'showbehaviors'
+//   template: 'containsTheDataTable'
+// });
 // Route.route('/table', {
 //   template: 'containsTheDataTable'
 // });
+FlowRouter.route('/results', {
+  name: 'Results.show',
+  action() {
+    BlazeLayout.render('containsTheDataTable', {main: 'Results_show_page'});
+  }
+});
+
+FlowRouter.route('/', {
+  name: 'home',
+  action() {
+    BlazeLayout.render('home', {main: 'Home_show_page'});
+  }
+})
+
+FlowRouter.route('/showtests', {
+  name: 'Tests.show',
+  action() {
+    BlazeLayout.render('behaviorclocksDataTable', {main: 'Tests_show_page'});
+  }
+})
+
+FlowRouter.route('/createtests', {
+  name: 'Tests.create',
+  action() {
+    BlazeLayout.render('behaviorForm', {main: 'Tests_create_page'});
+  }
+})
 
 
 if (Meteor.isClient) {
