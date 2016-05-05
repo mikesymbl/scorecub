@@ -1,0 +1,128 @@
+{
+  "format": "web-program-pre1",
+  "manifest": [
+    {
+      "path": "c976a6379b172ae402d142e570c480b6dc5d6786.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/c976a6379b172ae402d142e570c480b6dc5d6786.js?meteor_js_resource=true",
+      "size": 1147723,
+      "hash": "c976a6379b172ae402d142e570c480b6dc5d6786"
+    },
+    {
+      "path": "0721908b62f769546a392261d426bf97d9f9aae3.css",
+      "where": "client",
+      "type": "css",
+      "cacheable": true,
+      "url": "/0721908b62f769546a392261d426bf97d9f9aae3.css?meteor_css_resource=true",
+      "size": 127603,
+      "hash": "0721908b62f769546a392261d426bf97d9f9aae3"
+    },
+    {
+      "path": "packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.eot",
+      "size": 20127,
+      "hash": "86b6f62b7853e67d3e635f6512a5a5efc58ea3c3"
+    },
+    {
+      "path": "packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.svg",
+      "size": 108738,
+      "hash": "de51a8494180a6db074af2dee2383f0a363c5b08"
+    },
+    {
+      "path": "packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.ttf",
+      "size": 45404,
+      "hash": "44bc1850f570972267b169ae18f1cb06b611ffa2"
+    },
+    {
+      "path": "packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.woff",
+      "size": 23424,
+      "hash": "278e49a86e634da6f2a02f3b47dd9d2a8f26210f"
+    },
+    {
+      "path": "packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.woff2",
+      "size": 18028,
+      "hash": "ca35b697d99cae4d1b60f2d60fcd37771987eb07"
+    },
+    {
+      "path": "packages/aldeed_tabular/images/sort_asc.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/aldeed_tabular/images/sort_asc.png",
+      "size": 1118,
+      "hash": "fdadf7f5935f4a411ab19366c6590546432acd0f"
+    },
+    {
+      "path": "packages/aldeed_tabular/images/sort_asc_disabled.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/aldeed_tabular/images/sort_asc_disabled.png",
+      "size": 2916,
+      "hash": "2d39f08b8706a492e6c4847006c22ff1208949f6"
+    },
+    {
+      "path": "packages/aldeed_tabular/images/sort_both.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/aldeed_tabular/images/sort_both.png",
+      "size": 1136,
+      "hash": "cb35461ff7f6547daed299080563969b41fed878"
+    },
+    {
+      "path": "packages/aldeed_tabular/images/sort_desc.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/aldeed_tabular/images/sort_desc.png",
+      "size": 1127,
+      "hash": "79bc8ee64be969c8c02db30a9317e534a3db7877"
+    },
+    {
+      "path": "packages/aldeed_tabular/images/sort_desc_disabled.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/aldeed_tabular/images/sort_desc_disabled.png",
+      "size": 1045,
+      "hash": "7bc88275f1d99623505dfa0d6730978e5c65525e"
+    },
+    {
+      "path": "app/images/Lion-128.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/Lion-128.png",
+      "size": 65838,
+      "hash": "0959c286b5ca911763b91826e2b18c60505a3165"
+    },
+    {
+      "path": "head.html",
+      "where": "internal",
+      "type": "head",
+      "hash": "1ed48b565626e1117fc14b57f63c8cfaf6a45e8f"
+    }
+  ]
+}
