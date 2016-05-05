@@ -33,3 +33,5 @@ meson:electron
 iron:router
 kadira:flow-router
 kadira:blaze-layout
+accounts-password
+accounts-ui

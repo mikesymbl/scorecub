@@ -7,6 +7,7 @@ Template.behaviorForm.events({
 
     // get the data we need from the form
     var newBehavior = {
+      createdBy: Meteor.userId(),
       behaviorname: event.target.behaviorname.value,
       shortcutKey: event.target.shortcutKey.value,
       timerType: event.target.timerType.value,
@@ -20,7 +21,7 @@ Template.behaviorForm.events({
       event.target.shortcutKey.value = '';
         event.target.timerType.value = '';
           event.target.category.value = '';
-        
+
   }
 
 });

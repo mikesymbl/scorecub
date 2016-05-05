@@ -1,5 +1,5 @@
 <template name="behavior">
-
+{{#if currentUser}}
 <div class="behavior well well-sm" data-id="{{ _id }}">
     <p style="font-size: 12px">Name: {{ behaviorname }} - Category: {{ category }} - Type: {{timerType}} - hotkey: {{shortcutKey}}</p>
     <div class="basicStopwatch " id="{{clockID}}"></div>
@@ -11,4 +11,5 @@
     {{ /each }} -->
 
 </div>
+{{/if}}
 </template>

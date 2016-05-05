@@ -2,6 +2,7 @@
 
 
 <template name="localvideoplayer">
+  {{#if currentUser}}
 <style>
 video, input {
     display: block;
@@ -135,11 +136,16 @@ var testNamer = $("#zeTestDialog").val();
 	      // console.log(timetest);
 				var timetest = zeeVideo[0].currentTime;
 
+
+        var currentUserId = Meteor.userId();
+          // return BehaviorClocks.find({"category":$("#activeTest").val()}).fetch();
+
 	      // console.log($("#myVideo").currentTime)
 	       console.log("triggered" + clock.clockID);
 	       if(clock.timerType == "frequency") {
 	          // get the data we need from the form
 	          var newEvent = {
+              createdBy: currentUserId,
 							testName: testNamer,
 	            behaviorname: clock.behaviorname,
 	            time: timetest,
@@ -152,6 +158,7 @@ var testNamer = $("#zeTestDialog").val();
 
 	       else if(clock.timerType == "duration") {
 	          var newEvent = {
+                createdBy: currentUserId,
 							testName: testNamer,
 	            behaviorname: clock.behaviorname,
 	            time: timetest,
@@ -180,5 +187,5 @@ var testNamer = $("#zeTestDialog").val();
 </div>
 </div>
 {{> containsTheDataTable}}
-
+{{/if}}
 </template>

@@ -1,5 +1,5 @@
 <template name="showbehaviors">
-
+{{#if currentUser}}
 
  <div class="behaviorclocks">
     {{#each behaviorclocks}}
@@ -7,6 +7,6 @@
     {{ /each }}
   </div>
 
-
+{{/if}}
 
 </template>

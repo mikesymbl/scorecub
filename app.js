@@ -163,7 +163,10 @@ updateCountdownTimer = function updateCountdownTimer() {
     }
 
 dataTableData = function () {
-    return BehaviorEvents.find({}).fetch(); // or .map()
+  var currentUserId = Meteor.userId();
+    // return BehaviorClocks.find({"category":$("#activeTest").val()}).fetch();
+    return BehaviorEvents.find({createdBy: currentUserId}).fetch();// or .map()
+
 };
 var optionsObject = {
     columns: [
@@ -204,8 +207,9 @@ Template.containsTheDataTable.helpers({
 ////////////////////////////////////////////////////////////////////////////////
 
 behaviorclocksDataTableData = function () {
+  var currentUserId = Meteor.userId();
     // return BehaviorClocks.find({"category":$("#activeTest").val()}).fetch();
-    return BehaviorClocks.find({}).fetch();// or .map()
+    return BehaviorClocks.find({createdBy: currentUserId}).fetch();// or .map()
 };
 var behaviorClocksOptionsObject = {
     columns: [{
@@ -251,11 +255,18 @@ Template.behaviorclocksDataTable.helpers({
 Template.body.helpers({
 
   behaviorclocks: function() {
-    return BehaviorClocks.find();
+    var currentUserId = Meteor.userId();
+      // return BehaviorClocks.find({"category":$("#activeTest").val()}).fetch();
+      return BehaviorClocks.find({createdBy: currentUserId}).fetch();// or .map()
+    // return BehaviorClocks.find();
+
   },
 
   behaviorevents: function() {
-    return BehaviorEvents.find();
+    var currentUserId = Meteor.userId();
+      // return BehaviorClocks.find({"category":$("#activeTest").val()}).fetch();
+      return BehaviorEvents.find({createdBy: currentUserId}).fetch();// or .map()
+
   }
 
 });
@@ -342,7 +353,11 @@ Template.video.rendered = function () {
 Template.showbehaviors.helpers({
 
   behaviorclocks: function() {
-    return BehaviorClocks.find();
+    var currentUserId = Meteor.userId();
+      // return BehaviorClocks.find({"category":$("#activeTest").val()}).fetch();
+      return BehaviorClocks.find({createdBy: currentUserId}).fetch();// or .map()
+    //
+    // return BehaviorClocks.find();
   }
 
 });

@@ -1,4 +1,5 @@
 <template name="behaviorForm">
+{{#if currentUser}}
     <h2 class="page-header">Create a behavior</h2>
     <form id="createBehaviorForm">
 
@@ -46,4 +47,5 @@
         <button type="submit" class="btn btn-primary">Create Behavior</button>
     </div>
 </form>
+{{/if}}
 </template>
