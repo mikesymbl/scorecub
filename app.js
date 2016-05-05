@@ -168,7 +168,7 @@ dataTableData = function () {
     return BehaviorEvents.find({createdBy: currentUserId}).fetch();// or .map()
 
 };
- var optionsObject = {
+     var optionsObject = {
     columns: [
       {
           title: 'Test Name',
